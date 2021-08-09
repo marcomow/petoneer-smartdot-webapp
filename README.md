@@ -1,4 +1,4 @@
-# petoneer-smartdot-webapp
+# Petoneer Smart Dot Webapp
 A webapp to directly control the [Petoneer Smart Dot](https://www.petoneer.com/playdot), without the need of the official app.
 
 I learned how to reverse engineer a bluetooth device thanks to [@urish](https://github.com/urish)! 
