@@ -19,5 +19,8 @@
     "watch": "cross-env-shell NODE_ENV=development \"parcel serve src/index.html --host localhost\"",
     "build": "cross-env-shell NODE_ENV=production \"rimraf public /Q && parcel build src/index.html --dist-dir public --public-url ./ && rimraf dist /Q \"",
     "serve built": "cross-env-shell NODE_ENV=production \"parcel serve public/index.html --host localhost\""
+  },
+  "devDependencies": {
+    "@parcel/transformer-image": "2.0.0-rc.0"
   }
 }

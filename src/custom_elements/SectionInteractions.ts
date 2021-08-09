@@ -22,6 +22,8 @@ export class SectionInteractions extends HTMLDivElement {
             { command: '0f0405000208', title: 'medium' },
             { command: '0f0405000309', title: 'large' }
         ];
+        const containerPreset = document.createElement('div');
+        containerPreset.innerHTML = `<p>Preset Game</p>`;
         const buttonsPreset: HTMLButtonElement[] = commands.map((command: CommandSetting): HTMLButtonElement => {
             const button: HTMLButtonElement = document.createElement('button', { is: ButtonSendPreset.tag });
             button.setAttribute(btCommandAttribute, command.command);
@@ -29,9 +31,10 @@ export class SectionInteractions extends HTMLDivElement {
             button.addEventListener('click', () => {
                 btController.setPresetCommand(command.command);
             });
-            this.append(button);
+            containerPreset.append(button);
             return button;
         });
+        this.append(containerPreset);
     }
 }
 customElements.define(SectionInteractions.tag, SectionInteractions, { extends: 'div' });
