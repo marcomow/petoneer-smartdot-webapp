@@ -1,9 +1,12 @@
 import Swal from "sweetalert2";
 import { ButtonBtConnect } from "./ButtonBtConnect";
+import { generateInput, ManualArgument } from "./ManualInput";
 
 class BtController {
     device: BluetoothDevice;
     server: BluetoothRemoteGATTServer;
+    service: BluetoothRemoteGATTService;
+    characteristic: BluetoothRemoteGATTCharacteristic;
 
     async connect(): Promise<boolean> {
         if (!navigator.bluetooth) {
@@ -26,16 +29,22 @@ class BtController {
                 buttonBtConnect.connected = false;
             }
             this.server = await this.device.gatt?.connect?.();
+            this.service = await this.server.getPrimaryService(0xfff0);
+            this.characteristic = await this.service.getCharacteristic(0xfff3);
             return true;
         } catch (error) {
             return false;
         }
     }
-    async setPresetCommand(command: string) {
-        const service: BluetoothRemoteGATTService = await this.server.getPrimaryService(0xfff0);
-        const characteristic: BluetoothRemoteGATTCharacteristic = await service.getCharacteristic(0xfff3);
+    async setPresetCommand(command: string): Promise<void> {
         const value = command.match(/.{1,2}/g).map(v => parseInt(v, 16));
-        characteristic.writeValue(new Uint8Array(value));
+        console.log(value);
+        this.characteristic.writeValue(new Uint8Array(value));
+    }
+    async setManualCommand(argument: ManualArgument): Promise<void> {
+        const value = generateInput(argument);
+        console.log(value);
+        this.characteristic.writeValue(new Uint8Array(value));
     }
 }
 export const btController = new BtController();
