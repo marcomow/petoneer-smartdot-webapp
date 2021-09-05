@@ -9,10 +9,6 @@
     "last 2 chrome versions"
   ],
   "dependencies": {
-    "@types/node": "^16.4.13",
-    "@types/web-bluetooth": "^0.0.10",
-    "cross-env": "^7.0.3",
-    "parcel": "^2.0.0-rc.0",
     "sweetalert2": "^11.1.2"
   },
   "scripts": {
@@ -21,6 +17,13 @@
     "serve built": "cross-env-shell NODE_ENV=production \"parcel serve public/index.html --host localhost\""
   },
   "devDependencies": {
-    "@parcel/transformer-image": "2.0.0-rc.0"
+    "@parcel/transformer-image": "2.0.0-rc.0",
+    "@types/node": "^16.4.13",
+    "@types/web-bluetooth": "^0.0.10",
+    "cross-env": "^7.0.3",
+    "parcel": "^2.0.0-rc.0"
+  },
+  "resolutions": {
+    "ansi-html": "https://github.com/gebhardtr/ansi-html"
   }
 }
