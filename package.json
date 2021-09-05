@@ -22,5 +22,8 @@
   },
   "devDependencies": {
     "@parcel/transformer-image": "2.0.0-rc.0"
+  },
+  "resolutions": {
+    "ansi-html": "https://github.com/gebhardtr/ansi-html"
   }
 }
