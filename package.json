@@ -13,7 +13,8 @@
     "@types/web-bluetooth": "^0.0.10",
     "cross-env": "^7.0.3",
     "parcel": "^2.0.0-rc.0",
-    "sweetalert2": "^11.1.2"
+    "sweetalert2": "^11.1.2",
+    "set-value":"^4.1.0"
   },
   "scripts": {
     "watch": "cross-env-shell NODE_ENV=development \"parcel serve src/index.html --host localhost\"",
