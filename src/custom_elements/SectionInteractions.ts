@@ -5,8 +5,8 @@ import { hasIs } from "./hasIs";
 type CommandSetting = { command: string, title: string }
 
 export class SectionInteractions extends HTMLDivElement {
-    static get tag(): string {
-        return `section-interactions`;
+    static get tag() {
+        return `section-interactions` as const;
     }
     connectedCallback(): void {
         hasIs(this);

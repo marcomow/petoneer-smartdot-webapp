@@ -1,13 +1,11 @@
-import Swal from "sweetalert2";
-import { SectionInteractions } from "./SectionInteractions";
-import { hasIs } from './hasIs';
-import { btController } from "./BtController";
 import { activeButtonClasses, buttonClasses, inactiveButtonClasses } from "../styles/buttons";
+import { btController } from "./BtController";
+import { hasIs } from './hasIs';
+import { SectionInteractions } from "./SectionInteractions";
 
 export class ButtonBtConnect extends HTMLButtonElement {
-
-    static get tag(): string {
-        return `button-bt-connect`;
+    static get tag() {
+        return `button-bt-connect` as const;
     }
     set connected(isConnected: boolean) {
         this.disabled = isConnected;
@@ -16,13 +14,13 @@ export class ButtonBtConnect extends HTMLButtonElement {
         this.classList.add(...classesAdd);
         this.classList.remove(...classesRemove)
 
-        const sectionInteractions: SectionInteractions = document.querySelector(`[is="${SectionInteractions.tag}"]`);
+        const sectionInteractions = document.querySelector(`[is="${SectionInteractions.tag}"]`) as SectionInteractions;
         sectionInteractions.refreshButtons(isConnected);
     }
     connectedCallback(): void {
+        this.innerHTML = `connect`;
         hasIs(this);
         this.classList.add(...buttonClasses, ...activeButtonClasses);
-        this.innerHTML = `connect`;
         this.addEventListener('click', async () => {
             this.disabled = true;
             const isConnected: boolean = await btController.connect();
