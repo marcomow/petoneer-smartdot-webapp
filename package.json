@@ -12,19 +12,12 @@
     "@types/node": "^16.4.13",
     "@types/web-bluetooth": "^0.0.10",
     "cross-env": "^7.0.3",
-    "parcel": "^2.0.0-rc.0",
-    "sweetalert2": "^11.1.2",
-    "set-value":"^4.1.0"
+    "parcel": "^2.8.1",
+    "sweetalert2": "^11.1.2"
   },
   "scripts": {
     "watch": "cross-env-shell NODE_ENV=development \"parcel serve src/index.html --host localhost\"",
     "build": "cross-env-shell NODE_ENV=production \"rimraf public /Q && parcel build src/index.html --dist-dir public --public-url ./ && rimraf dist /Q \"",
-    "serve built": "cross-env-shell NODE_ENV=production \"parcel serve public/index.html --host localhost\""
-  },
-  "devDependencies": {
-    "@parcel/transformer-image": "2.0.0-rc.0"
-  },
-  "resolutions": {
-    "ansi-html": "https://github.com/gebhardtr/ansi-html"
+    "postbuild": "cross-env-shell NODE_ENV=production \"parcel serve public/index.html --host localhost\""
   }
 }
